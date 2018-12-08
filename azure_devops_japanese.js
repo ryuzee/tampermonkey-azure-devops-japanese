@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.0.4
+// @version      0.0.5
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
@@ -110,9 +110,10 @@
       ["Backlog", "バックログ"],
       ["Branch Name", "ブランチ名"],
       ["Branches", "ブランチ"],
+      ["Branch", "ブランチ"],
       ["Browse All Sprints", "全てのスプリントを見る"],
       ["Builds", "ビルド"],
-      ["Bug", "バグ"],
+      //["Bug", "バグ"], // ビルド設定の箇所のdebugとぶつかるので削除
       ["Business Value", "ビジネス価値"],
       ["Cancel", "キャンセル"],
       ["Capacity", "キャパシティ"],
@@ -146,7 +147,9 @@
       ["Description", "説明"],
       ["Deployment group name", "デプロイグループ名"],
       ["Deployment groups", "デプロイグループ"],
+      ["Discard", "破棄"],
       ["Download as Zip", "Zipでダウンロード"],
+      ["Duration", "所要時間"],
       ["Editor", "エディタ"],
       ["Edit", "編集"],
       ["Effort", "規模"],
@@ -177,6 +180,7 @@
       ["Latest Update", "最終更新日"],
       ["Leave", "移動"],
       ["Library", "ライブラリ"],
+      ["Link Variable group", "変数グループにリンク"],
       ["Load test", "ロードテスト"],
       ["Members", "メンバー"],
       ["Mentioned", "メンションされた項目"],
@@ -202,6 +206,7 @@
       ["New Test Plan", "新規テスト計画"],
       ["Open in Queries", "クエリーで開く"],
       ["Open filtered view in Queries", "クエリーで開く"],
+      ["Options", "オプション"],
       ["Order", "順番"],
       ["Overview", "概要"],
       ["Parameters", "パラメーター"],
@@ -222,6 +227,7 @@
       ["Related Work", "関連する作業"],
       ["Releases", "リリース"],
       ["Results", "結果"],
+      ["Retention", "保持期間"],
       ["Revert changes", "変更を元に戻す"],
       ["Runs", "実行結果"],
       ["Run query", "クエリーの実行"],
@@ -239,6 +245,7 @@
       ["Summary", "サマリー"],
       ["Taskboard", "タスクボード"],
       ["Task Groups", "タスクグループ"],
+      ["Tasks", "タスク"],
       ["Task", "タスク"],
       ["Templates", "テンプレート"],
       ["Test Case", "テストケース"],
@@ -246,6 +253,8 @@
       ["Tags", "タグ"],
       ["Task groups", "タスクグループ"],
       ["Title", "タイトル"],
+      ["Triggers", "トリガー"],
+      ["Trigger", "トリガー"],
       ["Types", "種別"],
       ["View as board", "ボードで見る"],
       ["View as backlog", "バックログで見る"],
@@ -256,6 +265,7 @@
       ["Variable Groups", "変数グループ"],
       ["Variable group name", "変数グループ名"],
       ["Variable group", "変数グループ"],
+      ["Variables", "変数"],
       /** 汎用 **/
       ["Add", "追加"],
       ["All", "全て"],
