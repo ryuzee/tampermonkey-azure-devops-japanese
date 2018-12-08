@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.2
+// @version      0.0.2
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
@@ -12,7 +12,6 @@
   'use strict';
 
   // オブザーバインスタンスを作成
-  // MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
   var observer = new MutationObserver(function(mutations, observer) {
     mutations.forEach(function(mutation){
       var keys = [
@@ -43,7 +42,6 @@
       }
       wholeDOMReplace(elms);
     });
-    console.log('changed');
   });
 
   observer.observe(document, {
@@ -241,14 +239,6 @@
       ["Rename", "リネーム"],
       ["Save", "保存"],
     ];
-
-    /**
-    var source = elm.innerHTML;
-    for(var i=0; i<rep.length; i++) {
-      source = source.replace(new RegExp(rep[i][0], 'ig'), rep[i][1]);
-    }
-    elm.innerHTML = source;
-    **/
 
     var source = elm.textContent;
     for(var i=0; i<rep.length; i++) {
