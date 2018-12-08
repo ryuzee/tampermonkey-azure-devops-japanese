@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.0.3
+// @version      0.0.4
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
