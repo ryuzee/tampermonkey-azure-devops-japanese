@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.0.6
+// @version      0.0.7
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
@@ -14,6 +14,22 @@
   // オブザーバインスタンスを作成
   var observer = new MutationObserver(function(mutations, observer) {
     mutations.forEach(function(mutation){
+      process(mutation.target);
+    });
+  });
+
+  observer.observe(document, {
+    subtree: true,
+    attributes: true
+  });
+
+  // 変更検知以外にも定期実行
+  setInterval(
+    function() { process(document); },
+    500
+  );
+
+  var process = function(source) {
       var keys = [
         "button.btn-cta",
         // "button.ms-CommandBarItem-link",
@@ -53,18 +69,12 @@
       ];
       var elms = [];
       for(var i=0; i < keys.length; i++){
-        elms.push(mutation.target.querySelectorAll(keys[i]));
+        elms.push(source.querySelectorAll(keys[i]));
       }
-      wholeDOMReplace(elms);
-    });
-  });
+      processElements(elms);
+  };
 
-  observer.observe(document, {
-    subtree: true,
-    attributes: true
-  });
-
-  var wholeDOMReplace = function(elms) {
+  var processElements = function(elms) {
     for(var i=0; i<elms.length; i++) {
       var elm = elms[i];
       for(var j = 0, l = elm.length; j < l; j++) {
