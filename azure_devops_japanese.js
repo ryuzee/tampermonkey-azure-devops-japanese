@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.1
+// @version      0.2
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
@@ -10,10 +10,46 @@
 
 (function() {
   'use strict';
-  setInterval(
-    function(){ GM_replace(); },
-   1000
-  );
+
+  // オブザーバインスタンスを作成
+  // MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+  var observer = new MutationObserver(function(mutations, observer) {
+    mutations.forEach(function(mutation){
+      var keys = [
+        "button.btn-cta",
+        //"button.ms-CommandBarItem-link",
+        "div.body-l",
+        "div.ms-Button-label",
+        "div.ms-TooltipHost span",
+        "div.upsell-title",
+        "div.title-m",
+        "label.ms-Label",
+        "span.bolt-button-text",
+        "span.commandbar-item-text",
+        "span.ms-CommandBarItem-commandText",
+        "span.ms-Pivot-text",
+        "span.ms-ContextualMenu-itemText",
+        "span.ms-Dropdown-optionText",
+        "span.ms-Dropdown-title",
+        "span.new-feed-text",
+        "span.queries-favorite-list-header-name",
+        "span.text",
+        "span.ui-button-text",
+        "span.vss-PickList--selectableElementButton-text",
+      ];
+      var elms = [];
+      for(var i=0; i < keys.length; i++){
+        elms.push(mutation.target.querySelectorAll(keys[i]));
+      }
+      wholeDOMReplace(elms);
+    });
+    console.log('changed');
+  });
+
+  observer.observe(document, {
+    subtree: true,
+    attributes: true
+  });
 
   var wholeDOMReplace = function(elms) {
     for(var i=0; i<elms.length; i++) {
@@ -23,36 +59,6 @@
         replaceWords(el);
       }
     }
-  };
-
-  var GM_replace = function() {
-    var keys = [
-      "button.btn-cta",
-      "button.ms-CommandBarItem-link",
-      "div.body-l",
-      "div.ms-Button-label",
-      "div.ms-TooltipHost span",
-      "div.upsell-title",
-      "div.title-m",
-      "label.ms-Label",
-      "span.bolt-button-text",
-      "span.commandbar-item-text",
-      "span.ms-CommandBarItem-commandText",
-      "span.ms-Pivot-text",
-      "span.ms-ContextualMenu-itemText",
-      "span.ms-Dropdown-optionText",
-      "span.ms-Dropdown-title",
-      "span.new-feed-text",
-      "span.queries-favorite-list-header-name",
-      "span.text",
-      "span.ui-button-text",
-      "span.vss-PickList--selectableElementButton-text",
-    ];
-    var elms = [];
-    for(var i=0; i < keys.length; i++){
-      elms.push(document.querySelectorAll(keys[i]));
-    }
-    wholeDOMReplace(elms);
   };
 
   var replaceWords = function(elm) {
@@ -111,6 +117,7 @@
       ["Configurations", "設定"],
       ["Contents", "コンテンツ"],
       ["Copy query URL", "クエリーのURLをコピー"],
+      ["Create a release", "リリースを作成"],
       ["Create copy of work item", "作業項目のコピーを作成"],
       ["Create Tag", "タグの作成"],
       ["Create query", "クエリーの作成"],
@@ -235,10 +242,18 @@
       ["Save", "保存"],
     ];
 
+    /**
     var source = elm.innerHTML;
     for(var i=0; i<rep.length; i++) {
       source = source.replace(new RegExp(rep[i][0], 'ig'), rep[i][1]);
     }
     elm.innerHTML = source;
+    **/
+
+    var source = elm.textContent;
+    for(var i=0; i<rep.length; i++) {
+      source = source.replace(new RegExp(rep[i][0], 'ig'), rep[i][1]);
+    }
+    elm.textContent = source;
   };
 })();
