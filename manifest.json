@@ -1,0 +1,13 @@
+{
+ "manifest_version": 2,
+ "name": "Azure DevOps Japanese",
+ "description": "Change various texts in Azure DevOps into Japanese",
+ "version": "0.0.4",
+ "content_scripts": [
+ {
+    "matches": ["https://dev.azure.com/*"],
+    "js": ["azure_devops_japanese.js"],
+    "run_at": "document_idle"
+ }
+ ]
+}
