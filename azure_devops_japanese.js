@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.0.2
+// @version      0.0.3
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
@@ -16,11 +16,14 @@
     mutations.forEach(function(mutation){
       var keys = [
         "button.btn-cta",
-        //"button.ms-CommandBarItem-link",
+        // "button.ms-CommandBarItem-link",
         "div.body-l",
+        "div.expand-collapse-text",
         "div.ms-Button-label",
-        "div.ms-TooltipHost span",
+        // ビルドのブランチ名表記がNG
+        // "div.ms-TooltipHost span",
         "div.upsell-title",
+        "div.title",
         "div.title-m",
         "label.ms-Label",
         "span.bolt-button-text",
@@ -30,6 +33,7 @@
         "span.ms-ContextualMenu-itemText",
         "span.ms-Dropdown-optionText",
         "span.ms-Dropdown-title",
+        "span.ms-DetailsHeader-cellName",
         "span.new-feed-text",
         "span.queries-favorite-list-header-name",
         "span.text",
@@ -76,6 +80,7 @@
       ["Abandoned", "破棄済"],
       ["About this project", "このプロジェクトについて"],
       ["Active", "アクティブ"],
+      ["Activity Date", "更新日"],
       ["Add project description", "プロジェクトの説明を追加"],
       ["Add to top", "先頭に追加"],
       ["Add a deployment group", "デプロイグループの追加"],
@@ -87,7 +92,6 @@
       ["Assigned To", "アサイン"],
       ["Analytics", "分析"],
       ["Area Path", "エリアパス"],
-      ["Area", "エリア"],
       ["Artifacts", "作成物"],
       ["Available pools", "利用可能なプール"],
       ["Backlogs", "バックログ"],
@@ -115,6 +119,7 @@
       ["Configurations", "設定"],
       ["Contents", "コンテンツ"],
       ["Copy query URL", "クエリーのURLをコピー"],
+      ["Create a draft release", "リリース候補を作成"],
       ["Create a release", "リリースを作成"],
       ["Create copy of work item", "作業項目のコピーを作成"],
       ["Create Tag", "タグの作成"],
@@ -122,6 +127,7 @@
       ["Create Wiki", "Wikiの作成"],
       ["Currently deployed", "現在デプロイ済"],
       ["Customize", "カスタマイズ"],
+      ["Add to DashBoard", "ダッシュボードに追加"],
       ["DashBoards", "ダッシュボード"],
       ["Dashboard", "ダッシュボード"],
       ["Description", "詳細"],
@@ -163,6 +169,7 @@
       ["Mine", "自分"],
       ["Move to team project", "チームプロジェクトに移動"],
       ["My activity", "自動のアクティビティ"],
+      ["Add to My favorites", "自分のお気に入りに追加"],
       ["My favorites", "自分のお気に入り"],
       ["My Favorites", "自分のお気に入り"],
       ["New branch", "新規ブランチ"],
@@ -190,6 +197,7 @@
       ["Publish code as wiki", "コードをWikiページにする"],
       ["Pushes", "プッシュ"],
       ["Queries", "クエリー"],
+      ["Queued", "キュー追加"],
       ["Queue", "キュー"],
       ["Repos", "レポジトリ"],
       ["Recycle Bin", "ゴミ箱"],
@@ -204,6 +212,8 @@
       ["Security", "セキュリティ"],
       ["Sprints", "スプリント"],
       ["Start storyboarding", "ストーリーボードを作る"],
+      ["Stages", "ステージ"],
+      ["Stage Summary", "ステージサマリー"],
       ["States", "状態"],
       ["State", "状態"],
       ["Stay", "続行"],
@@ -228,15 +238,19 @@
       /** 汎用 **/
       ["Add", "追加"],
       ["All", "全て"],
+      ["Area", "エリア"],
       ["Boards", "ボード"],
+      ["Created", "作成日"],
       ["Create", "作成"],
       ["Delete", "削除"],
+      ["Export", "エクスポート"],
       //["Files", "ファイル"],
       //["File", "ファイル"],
       ["Groups", "グループ"],
+      ["Rename", "リネーム"],
+      ["Move", "移動"],
       ["Name", "名前"],
       ["New", "新規"],
-      ["Rename", "リネーム"],
       ["Save", "保存"],
     ];
 
