@@ -66,6 +66,7 @@
         "span.vss-PickList--multiSelectText",
         "span.vss-PickList--selectableElementButton-text",
         "span.vss-PickListDropdown--title-text",
+        "title",
       ];
       var elms = [];
       for(var i=0; i < keys.length; i++){
@@ -291,6 +292,7 @@
       ["All", "全て"],
       ["Area", "エリア"],
       ["Boards", "ボード"],
+      ["Board", "ボード"],
       ["Clear", "クリア"],
       ["Created", "作成日"],
       ["Create", "作成"],
