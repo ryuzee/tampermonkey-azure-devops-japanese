@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azure DevOps Japanese Text Translation
 // @namespace    https://www.ryuzee.com/
-// @version      0.0.7
+// @version      0.0.8
 // @description  Replace major English words into Japanese
 // @author       Ryuzee
 // @match        https://dev.azure.com/*
@@ -46,6 +46,7 @@
         "div.vss-PickList--groupHeader",
         "h1.page-title",
         "h1.vc-newbranches-title",
+        "h3.right-pane-header-title",
         "label.ms-Label",
         "label.workitemcontrol-label",
         "span.bolt-button-text",
@@ -56,6 +57,7 @@
         "span.ms-DetailsHeader-cellName",
         "span.ms-Dropdown-optionText",
         "span.ms-Dropdown-title",
+        "span.ms-Dropdown-title span",
         "span.ms-Pivot-text",
         "span.new-feed-text",
         "span.page-button",
@@ -68,6 +70,7 @@
         "span.vss-PickListDropdown--title-text",
         "title",
       ];
+
       var elms = [];
       for(var i=0; i < keys.length; i++){
         elms.push(source.querySelectorAll(keys[i]));
@@ -284,6 +287,7 @@
       ["Variables", "変数"],
       ["View as board", "ボードで見る"],
       ["View as backlog", "バックログで見る"],
+      ["Why are my commit in this order?", "なぜ自分のコミットがこの順番ですか？"],
       ["Work Items to link", "リンクする作業項目"],
       ["Work Items", "作業項目"],
       ["Work Item Type", "作業種別"],
@@ -309,14 +313,19 @@
       ["Move", "移動"],
       ["Name", "名前"],
       ["New", "新規"],
+      ["Planning", "プランニング"],
       ["Save & Close", "保存して閉じる"],
       ["Save", "保存"],
     ];
 
-    var source = elm.textContent;
-    for(var i=0; i<rep.length; i++) {
-      source = source.replace(new RegExp(rep[i][0], 'ig'), rep[i][1]);
+    if (elm.childNodes.length == 1 && elm.childNodes[0].nodeType == 3) {
+      var source = elm.textContent;
+      for(var i=0; i<rep.length; i++) {
+        source = source.replace(new RegExp(rep[i][0], 'ig'), rep[i][1]);
+      }
+      elm.textContent = source;
+    } else {
+      // console.log(elm.innerHTML);
     }
-    elm.textContent = source;
   };
 })();
