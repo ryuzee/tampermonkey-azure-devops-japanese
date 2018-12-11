@@ -318,14 +318,23 @@
       ["Save", "保存"],
     ];
 
+    // 空のテキストノードを強制的に削除する
+    var child = elm.childNodes;
+    var k = 0;
+    while(k < child.length) {
+      if(child[k].nodeName == "#text" && child[k].nodeValue.replace(/[\n ]+/, "") == "") {
+        elm.removeChild(child[k]); //textノードを削除
+      }
+      k++;
+    }
+
+    // 要素がテキストノードでhtmlタグがない場合だけ置換
     if (elm.childNodes.length == 1 && elm.childNodes[0].nodeType == 3) {
       var source = elm.textContent;
       for(var i=0; i<rep.length; i++) {
         source = source.replace(new RegExp(rep[i][0], 'ig'), rep[i][1]);
       }
       elm.textContent = source;
-    } else {
-      // console.log(elm.innerHTML);
     }
   };
 })();
