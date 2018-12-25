@@ -257,6 +257,7 @@
       ["Policies", "ポリシー"],
       ["Priority", "優先順位"],
       ["Project configuration", "プロジェクト設定"],
+      ["Project Name", "プロジェクト名"],
       ["Project settings", "プロジェクト設定"],
       ["Project stats", "プロジェクトの状況"],
       ["Projects", "プロジェクト"],
