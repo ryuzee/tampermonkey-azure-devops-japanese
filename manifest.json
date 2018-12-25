@@ -6,7 +6,7 @@
  "content_scripts": [
  {
     "matches": ["https://dev.azure.com/*"],
-    "js": ["azure_devops_japanese.js"],
+    "js": ["azure_devops_japanese.user.js"],
     "run_at": "document_idle"
  }
  ]
